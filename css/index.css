@@ -1,5 +1,5 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 * {
 	-webkit-font-smoothing: antialiased;
@@ -68,7 +68,7 @@ a.wide i, a.box i {
 	font-size: 60px;
 	text-align: center;
 	display: block;
-	margin-top: 10px; /* outside Codepen is actually 30px */
+	margin-top: 10px;
 }
 
 a.wide:hover, a.box:hover {
@@ -148,8 +148,7 @@ a.wide:active, a.box:active {
 }
 
 .gallery {
-	/* background: url(https://dl.dropbox.com/u/39272011/image_metro.png); */
-	/* Disabled by HTTP 404 Not Found. */
+	 background: url(../images/trolltunga.jpg);
 	-webkit-animation: galeri 15s infinite;
 	animation: galeri 15s infinite;
 }
