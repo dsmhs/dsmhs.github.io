@@ -1,84 +1,56 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>DSM</title>
-		<link rel="stylesheet" type="text/css" href="./css/index.css" charset="UTF-8">
-		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-	</head>
+---
+layout: default
+---
 
-	<body>
-		<div class="container">
-			<h1>Start</h1>
-			<div class="spacer">
-				<a href="#" class="wide blue">
-					<i class="icon-home"></i>
-					<h2>Show Desktop</h2>
-				</a>
-				<a href="#" class="wide orange">
-					<i class="icon-cog"></i>
-					<h2>Settings</h2>
-				</a>
-				<a href="#" class="box redgay">
-					<i class="icon-camera"></i>
-					<h2>Camera</h2>
-				</a>
-				<a href="#" class="box lime">
-					<i class="icon-heart"></i>
-					<h2>Favorite</h2>
-				</a>
-				<a href="#" class="box bluefish">
-					<i class="icon-twitter"></i>
-					<h2>Twitter</h2>
-				</a>
-				<a href="#" class="box yellow">
-					<i class="icon-map-marker"></i>
-					<h2>Places</h2>
-				</a>
-				<a href="#" class="wide magenta gallery">
-					<h2>Gallery</h2>
-				</a>
-				<a href="#" class="box redgay">
-					<i class="icon-globe"></i>
-					<h2>Browser</h2>
-				</a>
-				<a href="#" class="box orange">
-					<i class="icon-envelope-alt"></i>
-					<h2>E-mail</h2>
-				</a>
-				<a href="#" class="wide blue cal_e">
-					<h1>25</h1><p>Monday</p>
-					<h2 class="top cal_i">Sena Birthday Party At Jack House on 07:00 PM</h2>
-					<i class="icon-calendar"></i>
-				</a>
-				<a href="#" class="box lime">
-					<i class="icon-cloud"></i>
-					<h2>SkyDrive</h2>
-				</a>
-			</div>
+{% if site.posts.size == 0 %}
+  <h2>No post found</h2>
+{% endif %}
 
-			<div class="spacer spacer3x">
-				<a href="#" class="box blue">
-					<i class="icon-facebook"></i>
-					<h2>Facebook</h2>
-				</a>
-				<a href="#" class="box bluefish">
-					<i class="icon-facetime-video"></i>
-					<h2>FaceTime</h2>
-				</a>
-				<a href="#" class="box redgay">
-					<i class="icon-tasks"></i>
-					<h2>Task</h2>
-				</a>
-				<a href="#" class="box magenta">
-					<i class="icon-list-alt"></i>
-					<h2>Windows Explorer</h2>
-				</a>
-				<a href="#" class="wide yellow">
-					<i class="icon-play"></i>
-					<h2>Media</h2>
-				</a>
-			</div>
-		</div>
-	</body>
-</html>
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article class="post">
+      <h1>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h1>
+
+      <div clsss="meta">
+        <span class="date">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+
+        <ul class="tag">
+          {% for tag in post.tags %}
+          <li>
+            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <span class="prev">
+      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
+        &#xE000; Previous
+      </a>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <span class="next">
+      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+        Next &#xE001;
+      </a>
+    </span>
+  {% endif %}
+</div>
